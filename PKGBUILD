@@ -5,7 +5,7 @@
 
 pkgname=st-patched
 _pkgname=st
-pkgver=0.7.5.gf739843
+pkgver=0.7.16.ge448324
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://st.suckless.org/'
@@ -18,19 +18,19 @@ epoch=1
 # include config.h and any patches you want to have applied here
 source=('git://git.suckless.org/st'
     'http://st.suckless.org/patches/st-clipboard-20160727-308bfbf.diff'
+    st-inconsolata-20160807-308bfbf.diff
     'http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff'
-    'http://st.suckless.org/patches/st-solarized-both-20160727-308bfbf.diff'
-    'http://st.suckless.org/patches/st-visualbell-20160727-308bfbf.diff'
-    st-scrollback-vim-20160808-308bfbf.diff.pre
-    st-inconsolata-20160807-308bfbf.diff)
+    st-scrollback-vim-20161126-e448324.diff
+    st-solarized-both-20161126-e448324.diff
+    'http://st.suckless.org/patches/st-visualbell-20160727-308bfbf.diff')
 
 sha1sums=('SKIP'
-    '18037d96608d032dadc8f3bf1f9e788f731fb676'
-    'd089f953f091933fa867416648d497a87bde3461'
-    'af1295831ccbf84f64ae8a41d95e0d48c4cf87d4'
-    '9ce285628092e232edf971a65995fe797ee0bc43'
-    'db56bb8cb1e62193f535861a2994166cbb19840d'
-    '227dfde41a7d18d59bf3a629f28fb6e58d14578d')
+          '18037d96608d032dadc8f3bf1f9e788f731fb676'
+          '227dfde41a7d18d59bf3a629f28fb6e58d14578d'
+          'd089f953f091933fa867416648d497a87bde3461'
+          'd8c13e4a2e6e9abd9946841e3392e8686d5948d8'
+          'eabe7d15826513349f74b52dc342bb0fa2a6413e'
+          '9ce285628092e232edf971a65995fe797ee0bc43')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -50,9 +50,6 @@ prepare() {
 		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
 		-i config.mk
 	sed '/@tic/d' -i Makefile
-
-    # Apply scrollback patch first
-    patch < "$srcdir"/st-scrollback-vim-20160808-308bfbf.diff.pre
 
 	for file in "${source[@]}"; do
 		if [[ "$file" == "config.h" ]]; then
