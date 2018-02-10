@@ -17,12 +17,12 @@ makedepends=('ncurses' 'libxext' 'git')
 epoch=1
 # include config.h and any patches you want to have applied here
 source=('git://git.suckless.org/st'
-    'http://st.suckless.org/patches/st-clipboard-20160727-308bfbf.diff'
+    'https://st.suckless.org/patches/clipboard/st-clipboard-20160727-308bfbf.diff'
     st-inconsolata-20160807-308bfbf.diff
-    'http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff'
+    'https://st.suckless.org/patches/disable_bold_italic_fonts/st-disable-bold-italic-fonts.diff'
     st-scrollback-vim-20161126-e448324.diff
     st-solarized-both-20161126-e448324.diff
-    'http://st.suckless.org/patches/st-visualbell-20160727-308bfbf.diff')
+    'https://st.suckless.org/patches/visualbell/st-visualbell-20160727-308bfbf.diff')
 
 sha1sums=('SKIP'
           '18037d96608d032dadc8f3bf1f9e788f731fb676'
