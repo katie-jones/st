@@ -11,8 +11,8 @@ index b41747f..eae969e 100644
  /*
   * What program is execed by st depends of these precedence rules:
 @@ -172,6 +173,8 @@ static Shortcut shortcuts[] = {
- 	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
- 	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
+	{ ControlMask|ShiftMask,     XK_Z,           clipcopy,       {.i =  0} },
+	{ ControlMask|ShiftMask,     XK_X,           clippaste,      {.i =  0} },
 +	{ ControlMask|ShiftMask,          XK_K,           kscrollup,      {.i = -1} },
 +	{ ControlMask|ShiftMask,          XK_J,           kscrolldown,    {.i = -1} },
  	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },

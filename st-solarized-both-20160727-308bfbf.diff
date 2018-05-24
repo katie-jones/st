@@ -87,8 +87,8 @@ index b41747f..adaa9b8 100644
  /*
   * Default shape of cursor
 @@ -172,6 +184,7 @@ static Shortcut shortcuts[] = {
- 	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
- 	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
+	{ ControlMask|ShiftMask,     XK_Z,           clipcopy,       {.i =  0} },
+	{ ControlMask|ShiftMask,     XK_X,           clippaste,      {.i =  0} },
  	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 +	{ XK_ANY_MOD,           XK_F6,          swapcolors,     {.i =  0} },
  };
