@@ -5,7 +5,7 @@
 
 pkgname=st-patched
 _pkgname=st
-pkgver=0.7.16.ge448324
+pkgver=0.6.76.g308bfbf
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://st.suckless.org/'
@@ -16,13 +16,13 @@ depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 epoch=1
 # include config.h and any patches you want to have applied here
-source=('git://git.suckless.org/st'
-    'https://st.suckless.org/patches/clipboard/st-clipboard-20160727-308bfbf.diff'
-    st-inconsolata-20160807-308bfbf.diff
-    'https://st.suckless.org/patches/disable_bold_italic_fonts/st-disable-bold-italic-fonts.diff'
-    st-scrollback-vim-20161126-e448324.diff
-    st-solarized-both-20161126-e448324.diff
-    'https://st.suckless.org/patches/visualbell/st-visualbell-20160727-308bfbf.diff')
+source=('git://git.suckless.org/st#commit=308bfb'
+    '04_clipboard.diff::https://st.suckless.org/patches/clipboard/st-clipboard-20160727-308bfbf.diff'
+    05_st-inconsolata-20160807-308bfbf.diff
+    02_st-no-bold-colors-20160807-308bfbf.diff
+    01_st-scrollback-vim-20161126-e448324.diff
+    03_st-solarized-both-20161126-e448324.diff
+    '06_visualbell.diff::https://st.suckless.org/patches/visualbell/st-visualbell-20160727-308bfbf.diff')
 
 sha1sums=('SKIP'
           '18037d96608d032dadc8f3bf1f9e788f731fb676'
@@ -56,10 +56,14 @@ prepare() {
 			# add config.h if present in source array
 			# Note: this supersedes the above sed to config.def.h
 			cp "$srcdir/$file" .
-		elif [[ "$file" == *.diff || "$file" == *.patch ]]; then
+		fi
+	done
+
+	for file in "$srcdir"; do
+		if [[ "$file" == *.diff || "$file" == *.patch ]]; then
 			# add all patches present in source array
-            echo "$file"
-			patch -Np1 <"$srcdir/$(basename ${file})"
+			echo "$file"
+			patch -Np1 <"$file"
 		fi
 	done
 }
